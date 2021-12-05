@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/dashboard/moodWidget/mood_widget_view.dart';
 
-
 class MoodWidget extends StatelessWidget {
   const MoodWidget({Key? key}) : super(key: key);
 
@@ -37,35 +36,47 @@ class MoodWidget extends StatelessWidget {
                   Navigator.pop(context, 'Joyful');
                   _AddMood(DateTime.now(), 90);
                 },
-                child: const Text('Joyful'),
+                child: const Text('Joyful',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, 'Happy');
                   _AddMood(DateTime.now(), 70);
                 },
-                child: const Text('Happy'),
+                child: const Text('Happy',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, 'Content');
                   _AddMood(DateTime.now(), 50);
                 },
-                child: const Text('Content'),
+                child: const Text(
+                  'Content',
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, 'Sad');
                   _AddMood(DateTime.now(), 30);
                 },
-                child: const Text('Sad'),
+                child: const Text('Sad',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, 'Depressed');
                   _AddMood(DateTime.now(), 10);
                 },
-                child: const Text('Depressed'),
+                child: const Text('Depressed',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center),
               )
             ],
           );

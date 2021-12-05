@@ -17,7 +17,10 @@ class TraitDescriptionText extends StatelessWidget {
             children: [
               //OPENNESS
               Text(
-                "Openness: " + scores[0].toString() + "/10",
+                "Openness: " +
+                    ((scores.isNotEmpty) ? scores[0].toString() : "0") +
+                    "" +
+                    "/10",
                 style: GoogleFonts.roboto(
                     fontSize: 24, fontWeight: FontWeight.w500),
               ),
@@ -79,7 +82,9 @@ class TraitDescriptionText extends StatelessWidget {
               SizedBox(height: 15),
               //CONSCIENTIOUSNESS
               Text(
-                "Conscientiousness: " + scores[1].toString() + "/10",
+                "Conscientiousness: " +
+                    ((scores.isNotEmpty) ? scores[1].toString() : "0") +
+                    "/10",
                 style: GoogleFonts.roboto(
                     fontSize: 24, fontWeight: FontWeight.w500),
               ),
@@ -149,7 +154,9 @@ class TraitDescriptionText extends StatelessWidget {
               SizedBox(height: 15),
               //EXTROVERSION
               Text(
-                "Extroversion: " + scores[2].toString() + "/10",
+                "Extroversion: " +
+                    ((scores.isNotEmpty) ? scores[0].toString() : "0") +
+                    "/10",
                 style: GoogleFonts.roboto(
                     fontSize: 24, fontWeight: FontWeight.w500),
               ),
@@ -220,7 +227,7 @@ class TraitDescriptionText extends StatelessWidget {
               SizedBox(height: 15),
               //AGREEABLENESS
               Text(
-                "Agreeableness: " + scores[3].toString() + "/10",
+                "Agreeableness: " + ((scores.isNotEmpty) ? scores[3].toString() : "0") + "/10",
                 style: GoogleFonts.roboto(
                     fontSize: 24, fontWeight: FontWeight.w500),
               ),
@@ -292,7 +299,7 @@ class TraitDescriptionText extends StatelessWidget {
               SizedBox(height: 15),
               //NEUROTICISM
               Text(
-                "Neuroticism: " + scores[4].toString() + "/10",
+                "Neuroticism: " + ((scores.isNotEmpty) ? scores[4].toString() : "0") + "/10",
                 style: GoogleFonts.roboto(
                     fontSize: 24, fontWeight: FontWeight.w500),
               ),

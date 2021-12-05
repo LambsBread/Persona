@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/survey_kit_factory.dart';
 import 'package:persona_application/codex/testCard/test_card_factory.dart';
 import 'package:persona_application/codex/testCard/test_description.dart';
 import 'package:survey_kit/survey_kit.dart';
@@ -9,11 +8,12 @@ class TestCard extends StatelessWidget implements TestCardFactory {
   const TestCard({
     Key? key,
     required this.title,
-    required this.image,
+    required this.image, required this.surveyKit,
   }) : super(key: key);
 
   final String title;
   final DecorationImage image;
+  final SurveyKit surveyKit;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class TestCard extends StatelessWidget implements TestCardFactory {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return TestDescription(
-                            title: this.title, image: this.image);
+                            title: this.title, image: this.image, surveyKit: this.surveyKit);
                       }));
                     },
                     child: Container(
@@ -57,7 +57,7 @@ class TestCard extends StatelessWidget implements TestCardFactory {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return getSurvey(this.title, context);
+                            return this.surveyKit;
                           }));
                         },
                         child: Container(
@@ -79,18 +79,5 @@ class TestCard extends StatelessWidget implements TestCardFactory {
               ],
             ),
             margin: EdgeInsets.fromLTRB(20.0, 0.0, 20, 10.0)));
-  }
-
-  static SurveyKit getSurvey(String title, BuildContext context) {
-    switch (title) {
-      case "Big Five":
-        return SurveyKitFactory.createBigFiveSurvey(context);
-      case "Myers Briggs":
-        return SurveyKitFactory.createMyersSurvey(context);
-      case "Rorschach":
-        return SurveyKitFactory.createRorschachSurvey(context);
-      default:
-        return SurveyKitFactory.createBigFiveSurvey(context);
-    }
   }
 }

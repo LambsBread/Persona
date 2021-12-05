@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:persona_application/dashboard/traitWidget/trait_description_text.dart';
 
 class DescriptionBuilder extends StatelessWidget {
@@ -27,7 +29,30 @@ class DescriptionBuilder extends StatelessWidget {
 
               List<double> bigScores =
                   snapshot.data!.get("bigScores").cast<double>();
-              return TraitDescriptionText(scores: bigScores);
+              if (title == "Big 5 Personality Traits") {
+                return TraitDescriptionText(scores: bigScores);
+              } else if (title == "Myers-Briggs Personality Traits") {
+                //return TraitDescriptionText(scores: myersScores);
+                return Scaffold(
+                  body: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "In Development",
+                      style: GoogleFonts.roboto(fontSize: 25),
+                    ),
+                  ),
+                );
+              } else
+                //return TraitDescriptionText(scores: []);
+                return Scaffold(
+                  body: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "In Development",
+                      style: GoogleFonts.roboto(fontSize: 25),
+                    ),
+                  ),
+                );
             } catch (e) {
               print(
                   "A score was not found in database or the format was incorrect");

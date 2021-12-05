@@ -22,15 +22,15 @@ class RadarChartBuilder extends StatelessWidget {
             return new Text('');
           } else {
             try {
-              List<double> myersScores =
-                  snapshot.data!.get("myersScores").cast<double>();
+              //List<double> myersScores =
+                  //snapshot.data!.get("myersScores").cast<double>();
               List<double> bigScores =
                   snapshot.data!.get("bigScores").cast<double>();
               switch (title) {
                 case "Big 5 Personality Traits":
                   return MyRadarChart(values: bigScores, labels: this.labels);
                 case "Myers-Briggs Personality Traits":
-                  return MyRadarChart(values: myersScores, labels: this.labels);
+                  return MyRadarChart(values: [], labels: this.labels);
               }
             } catch (e) {
               print(

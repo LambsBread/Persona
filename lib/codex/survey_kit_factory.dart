@@ -17,11 +17,11 @@ class SurveyKitFactory extends SurveyKit {
   }
 
   factory SurveyKitFactory.createRorschachSurvey(BuildContext context) {
-    return SurveyKitFactory(context, getDevTask(), getBigFiveResult());
+    return SurveyKitFactory(context, getDevTask(), getDevResult());
   }
 
   factory SurveyKitFactory.createSixTeenPfSurvey(BuildContext context) {
-    return SurveyKitFactory(context, getDevTask(), getBigFiveResult());
+    return SurveyKitFactory(context, getDevTask(), getDevResult());
   }
 
   static dynamic getBigFiveResult() {
@@ -80,6 +80,11 @@ class SurveyKitFactory extends SurveyKit {
           }
         }
       }
+    };
+  }
+
+  static dynamic getDevResult(){
+    return (SurveyResult result){
     };
   }
 

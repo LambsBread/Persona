@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/survey_kit_factory.dart';
+import 'package:survey_kit/survey_kit.dart';
 
 class TestDescription extends StatelessWidget {
-  const TestDescription({Key? key, required this.title, required this.image})
+  const TestDescription(
+      {Key? key,
+      required this.title,
+      required this.image,
+      required this.surveyKit})
       : super(key: key);
 
   final String title;
   final DecorationImage image;
+  final SurveyKit surveyKit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,10 @@ class TestDescription extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left),
                     ElevatedButton(
-                      child: Text("Start", style: TextStyle(fontSize: 17),),
+                      child: Text(
+                        "Start",
+                        style: TextStyle(fontSize: 17),
+                      ),
                       style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -38,7 +46,7 @@ class TestDescription extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return SurveyKitFactory.createBigFiveSurvey(context);
+                          return this.surveyKit;
                         }));
                       },
                     )
