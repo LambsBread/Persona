@@ -18,7 +18,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   TextEditingController passController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  bool isLoading = false;
   bool isPass = true;
 
   @override
@@ -37,15 +36,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    /*if (isLoading) {
-      return Padding(
-        padding:
-            const EdgeInsets.only(left: 24, right: 24, top: 70, bottom: 40),
-        child: Center(
-          child: CircularProgressIndicator.adaptive(),
-        ),
-      );
-    }*/
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 70, bottom: 40),
       child: Form(
@@ -91,17 +81,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  setState(() {
-                    isLoading = true;
-                  });
-                  context.read<AuthenticationService>().createUserEmailandPassword(
-                      emailController.text.trim(),
-                      passController.text,
-                      nickNameController.text.trim(),
-                      context);
-                  /*setState(() {
-                    isLoading = false;
-                  });*/
+                  context
+                      .read<AuthenticationService>()
+                      .createUserEmailandPassword(
+                          emailController.text.trim(),
+                          passController.text,
+                          nickNameController.text.trim(),
+                          context);
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -111,7 +97,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     borderRadius: BorderRadius.circular(18)),
               ),
               child: Text(
-                "Register",
+                "Sign up",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

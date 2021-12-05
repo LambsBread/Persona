@@ -1,19 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:multi_charts/multi_charts.dart';
+import 'package:persona_application/dashboard/charts/radar_chart_builder.dart';
 import 'package:persona_application/dashboard/traitWidget/trait_widget_factory.dart';
 import 'package:persona_application/dashboard/traitWidget/traits_description.dart';
 
+//Widget used on dashboard for displaying radar chart and scores
 class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
-  const TraitWidget(
-      {Key? key,
-      required this.title,
-      required this.values,
-      required this.labels})
+  const TraitWidget({Key? key, required this.title, required this.labels})
       : super(key: key);
 
   final String title;
-  final List<double> values;
   final List<String> labels;
 
   @override
@@ -28,10 +24,7 @@ class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
             child: GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return TraitDescription(
-                        title: this.title,
-                        values: this.values,
-                        labels: this.labels);
+                    return TraitDescription(title: this.title);
                   }));
                 },
                 child: Container(
@@ -52,16 +45,7 @@ class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
                                         fontSize: 18))
                               ]),
                           SizedBox(height: 5),
-                          RadarChart(
-                            maxValue: 10,
-                            values: this.values,
-                            labels: this.labels,
-                            labelWidth: 100,
-                            textScaleFactor: 0.065,
-                            fillColor: Colors.green,
-                            maxHeight: 170,
-                            maxWidth: 170,
-                          ),
+                          RadarChartBuilder()
                         ])))));
   }
 }

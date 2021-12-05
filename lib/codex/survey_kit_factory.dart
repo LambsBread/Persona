@@ -13,15 +13,15 @@ class SurveyKitFactory extends SurveyKit {
   }
 
   factory SurveyKitFactory.createMyersSurvey(BuildContext context) {
-    return SurveyKitFactory(context, getTestTask(), getMyersResult());
+    return SurveyKitFactory(context, getDevTask(), getMyersResult());
   }
 
   factory SurveyKitFactory.createRorschachSurvey(BuildContext context) {
-    return SurveyKitFactory(context, getTestTask(), getBigFiveResult());
+    return SurveyKitFactory(context, getDevTask(), getBigFiveResult());
   }
 
   factory SurveyKitFactory.createSixTeenPfSurvey(BuildContext context) {
-    return SurveyKitFactory(context, getTestTask(), getBigFiveResult());
+    return SurveyKitFactory(context, getDevTask(), getBigFiveResult());
   }
 
   static dynamic getBigFiveResult() {
@@ -39,9 +39,7 @@ class SurveyKitFactory extends SurveyKit {
             //if the result is a multiple choice
             //question then TextChoice answer is a List<TextChoice>
             //textChoice.value stores answer and textChoice.text is the text);
-
             answer = questRes.result;
-            print("\nValue: " + answer.value);
             results.add(double.parse(answer.value));
           }
         }
@@ -52,7 +50,6 @@ class SurveyKitFactory extends SurveyKit {
       double average = 0;
       for (double value in results) {
         average += value;
-        print("\nAverage: " + average.toString());
         if (counter % 10 == 0) {
           scores.add(average / 10);
           average = 0;
@@ -64,17 +61,8 @@ class SurveyKitFactory extends SurveyKit {
 
       //GET CURRENT USER
       User? _user = FirebaseAuth.instance.currentUser;
-      tests.doc(_user!.displayName).set(test);
-
-      /*CollectionReference cr = FirebaseFirestore.instance.collection('Tests');
-      FirebaseFirestore.instance
-          .collection('Tests')
-          .doc(_user!.displayName)
-          .update(test);
-      tests
-          .add(test)
-          .then((value) => print("Test Added"))
-          .catchError((error) => print("Failed to add test: $error"));*/
+      //Add test
+      tests.doc(_user!.uid).set(test);
     };
   }
 
@@ -93,6 +81,17 @@ class SurveyKitFactory extends SurveyKit {
         }
       }
     };
+  }
+
+  static Task getDevTask() {
+    var task = OrderedTask(id: TaskIdentifier(), steps: [
+      InstructionStep(
+        title: 'This Test is still under development!',
+        text: 'Please try again another time :)',
+        buttonText: "I'll be back!",
+      )
+    ]);
+    return task;
   }
 
   static Task getTestTask() {
@@ -491,7 +490,7 @@ class SurveyKitFactory extends SurveyKit {
               defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
-        //Negative emotionality 
+        //Negative emotionality
         QuestionStep(
           title: 'Big Five Personalities',
           text: '41) I enjoy being there for people when they are feeling sad',

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 class AuthenticationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  //final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
   Stream<User?> get authStateChanges => _auth.idTokenChanges();
 
   Future<void> signOut() async {
@@ -23,10 +21,6 @@ class AuthenticationService {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       _auth.currentUser!.updateDisplayName(nickName);
-      /*_firestore
-          .collection('Tests')
-          .doc(userCredential.user!.displayName)
-          .set({"scores": 0});*/
     } on FirebaseAuthException catch (error) {
       showDialog(
         context: context,

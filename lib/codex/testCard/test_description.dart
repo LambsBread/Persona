@@ -25,10 +25,10 @@ class TestDescription extends StatelessWidget {
                   children: [
                     Text(this.title,
                         style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left),
                     ElevatedButton(
-                      child: Text("Start"),
+                      child: Text("Start", style: TextStyle(fontSize: 17),),
                       style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(

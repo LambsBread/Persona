@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/codex_page.dart';
+import 'package:persona_application/codex/codex.dart';
 import 'package:persona_application/settings/settings_page.dart';
 
 import '../dashboard/dashboard.dart';

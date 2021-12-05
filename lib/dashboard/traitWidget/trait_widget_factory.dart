@@ -5,10 +5,9 @@ import 'package:persona_application/dashboard/traitWidget/trait_widget.dart';
 abstract class TraitWidgetFactory extends StatelessWidget {
   TraitWidgetFactory({Key? key}) : super(key: key);
 
-  factory TraitWidgetFactory.createBigFiveTraits(List<double> values) {
+  factory TraitWidgetFactory.createBigFiveTraits() {
     return TraitWidget(
         title: "Big 5 Personality Traits",
-        values: values.isEmpty ? [0,0,0,0,0] : values,
         labels: [
           "Openness",
           "Conscientiousness",
@@ -18,10 +17,9 @@ abstract class TraitWidgetFactory extends StatelessWidget {
         ]);
   }
 
-  factory TraitWidgetFactory.createMyersTraits(List<double> values) {
+  factory TraitWidgetFactory.createMyersTraits() {
     return TraitWidget(
         title: "Myers-Briggs Personality Traits",
-        values: values.isEmpty ? [0,0,0,0,0,0,0,0] : values,
         labels: [
           "Extrovert",
           "Sensing",
@@ -35,24 +33,7 @@ abstract class TraitWidgetFactory extends StatelessWidget {
   }
 
   factory TraitWidgetFactory.createSixteenPfTraits() {
-    return TraitWidget(title: "Sixteen Personality Factors", values: [
-      3,
-      2,
-      3,
-      4,
-      1,
-      2,
-      4,
-      2,
-      3.5,
-      4.5,
-      1,
-      2.5,
-      3,
-      1.5,
-      4,
-      2.5
-    ], labels: [
+    return TraitWidget(title: "Sixteen Personality Factors", labels: [
       "Warm",
       "Thinker",
       "Stable",

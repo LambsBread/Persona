@@ -27,7 +27,7 @@ class HealthDescription extends StatelessWidget {
                 Expanded(
                     child: SingleChildScrollView(
                         child: Text(getDescription(this.title),
-                            style: GoogleFonts.roboto(fontSize: 16))))
+                            style: GoogleFonts.roboto(fontSize: 18))))
               ],
             )));
   }
