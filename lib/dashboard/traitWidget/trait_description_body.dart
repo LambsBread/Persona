@@ -5,9 +5,11 @@ import 'package:persona_application/dashboard/charts/radar_chart_builder.dart';
 import 'package:persona_application/dashboard/traitWidget/description_text_builder.dart';
 
 class DescriptionBody extends StatelessWidget {
-  const DescriptionBody({Key? key, required this.title}) : super(key: key);
+  const DescriptionBody({Key? key, required this.title, required this.labels})
+      : super(key: key);
 
   final String title;
+  final List<String> labels;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,10 @@ class DescriptionBody extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: 40),
-                  Container(height: 190, child: RadarChartBuilder()),
+                  Container(
+                      height: 190,
+                      child: RadarChartBuilder(
+                          title: this.title, labels: this.labels)),
                   SizedBox(height: 20),
                   Text(this.title,
                       style: GoogleFonts.roboto(

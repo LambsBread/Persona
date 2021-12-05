@@ -6,18 +6,19 @@ import 'package:persona_application/dashboard/traitWidget/trait_description_body
 class TraitDescription extends StatelessWidget {
   const TraitDescription({
     Key? key,
-    required this.title,
+    required this.title, required this.labels,
   }) : super(key: key);
 
   final String title;
+  final List<String> labels;
 
   @override
   Widget build(BuildContext context) {
     switch (title) {
       case "Big 5 Personality Traits":
-        return DescriptionBody(title: title);
+        return DescriptionBody(title: this.title, labels: this.labels,);
       case "Myers-Briggs Personality Traits":
-        return DescriptionBody(title: title);
+        return DescriptionBody(title: this.title, labels: this.labels);
       default:
         return Scaffold(
           body: Align(

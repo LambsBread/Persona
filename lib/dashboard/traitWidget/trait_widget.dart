@@ -24,7 +24,8 @@ class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
             child: GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return TraitDescription(title: this.title);
+                    return TraitDescription(
+                        title: this.title, labels: this.labels);
                   }));
                 },
                 child: Container(
@@ -45,7 +46,7 @@ class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
                                         fontSize: 18))
                               ]),
                           SizedBox(height: 5),
-                          RadarChartBuilder()
+                          RadarChartBuilder(title: title, labels: labels)
                         ])))));
   }
 }

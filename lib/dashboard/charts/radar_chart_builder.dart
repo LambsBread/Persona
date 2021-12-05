@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:persona_application/dashboard/charts/radar_chart.dart';
 
 class RadarChartBuilder extends StatelessWidget {
-  RadarChartBuilder({Key? key}) : super(key: key);
+  RadarChartBuilder({Key? key, required this.labels, required this.title})
+      : super(key: key);
+
+  final String title;
+  final List<String> labels;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +22,24 @@ class RadarChartBuilder extends StatelessWidget {
             return new Text('');
           } else {
             try {
-              //List<double> myersScores =
-              //snapshot.data!.get("myersScores").cast<double>();
-              //this.myersValues = myersScores;
-
+              List<double> myersScores =
+                  snapshot.data!.get("myersScores").cast<double>();
               List<double> bigScores =
-              snapshot.data!.get("bigScores").cast<double>();
-              return MyRadarChart(values: bigScores);
+                  snapshot.data!.get("bigScores").cast<double>();
+              switch (title) {
+                case "Big 5 Personality Traits":
+                  return MyRadarChart(values: bigScores, labels: this.labels);
+                case "Myers-Briggs Personality Traits":
+                  return MyRadarChart(values: myersScores, labels: this.labels);
+              }
             } catch (e) {
               print(
                   "A score was not found in database or the format was incorrect");
             }
-            return MyRadarChart(values: []);
+            return MyRadarChart(
+              values: [],
+              labels: labels,
+            );
           }
         });
   }
