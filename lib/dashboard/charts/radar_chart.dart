@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_charts/multi_charts.dart';
 
+/// This class is responsible
 class MyRadarChart extends StatelessWidget {
   const MyRadarChart({Key? key, required this.values, required this.labels})
       : super(key: key);

@@ -4,6 +4,7 @@ import 'package:persona_application/codex/testCard/test_card_factory.dart';
 
 import 'health_card.dart';
 
+/// This is the main class of the second screen Codex
 class Codex extends StatelessWidget {
   const Codex({Key? key}) : super(key: key);
 

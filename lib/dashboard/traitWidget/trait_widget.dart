@@ -4,7 +4,8 @@ import 'package:persona_application/dashboard/charts/radar_chart_builder.dart';
 import 'package:persona_application/dashboard/traitWidget/trait_widget_factory.dart';
 import 'package:persona_application/dashboard/traitWidget/traits_description.dart';
 
-//Widget used on dashboard for displaying radar chart and scores
+/// Main Widget used on the dashboard for displaying radar chart
+/// and scores of the surveys
 class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
   const TraitWidget({Key? key, required this.title, required this.labels})
       : super(key: key);

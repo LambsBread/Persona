@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_kit/survey_kit.dart';
 
+/// Class responsible for creating the different surveys for the different
+/// personality tests and
 class SurveyKitFactory extends SurveyKit {
   SurveyKitFactory(BuildContext context, Task task, dynamic result)
       : super(task: task, themeData: getThemeData(context), onResult: result);
@@ -24,6 +26,7 @@ class SurveyKitFactory extends SurveyKit {
     return SurveyKitFactory(context, getDevTask(), getDevResult());
   }
 
+  /// Scoring, adding the results to the database
   static dynamic getBigFiveResult() {
     return (SurveyResult surveyResult) {
       CollectionReference tests =
@@ -36,16 +39,17 @@ class SurveyKitFactory extends SurveyKit {
       for (StepResult stepRes in surveyResult.results) {
         for (QuestionResult questRes in stepRes.results) {
           if (questRes.result != null) {
-            //if the result is a multiple choice
-            //question then TextChoice answer is a List<TextChoice>
-            //textChoice.value stores answer and textChoice.text is the text);
+            /// If the result is a multiple choice
+            /// question then TextChoice answer is a List<TextChoice>
+            /// textChoice.value stores answer and textChoice.text is the text);
             answer = questRes.result;
             results.add(double.parse(answer.value));
           }
         }
       }
       test["results"] = results;
-      //SCORING
+
+      /// Scoring of BIG5 personalities
       int counter = 1;
       double average = 0;
       for (double value in results) {
@@ -59,21 +63,22 @@ class SurveyKitFactory extends SurveyKit {
       test["bigScores"] = scores;
       test["type"] = "BigFive";
 
-      //GET CURRENT USER
+      /// Get current user
       User? _user = FirebaseAuth.instance.currentUser;
-      //Add test
+
+      /// Add test
       tests.doc(_user!.uid).set(test);
     };
   }
 
-  //TODO
+  /// TODO
   static dynamic getMyersResult() {
     return (SurveyResult result) {
       for (StepResult answer in result.results) {
         for (QuestionResult quest in answer.results) {
           if (quest.result != null) {
-            //if the result is a multiple choice
-            //question then TextChoice is a List<TextChoice>
+            /// If the result is a multiple choice
+            /// question then TextChoice is a List<TextChoice>
             TextChoice textChoice = quest.result;
             print(
                 "\nValue: " + textChoice.value + "\nText: " + textChoice.text);
@@ -83,11 +88,12 @@ class SurveyKitFactory extends SurveyKit {
     };
   }
 
-  static dynamic getDevResult(){
-    return (SurveyResult result){
-    };
+  /// Results for unfinished tests
+  static dynamic getDevResult() {
+    return (SurveyResult result) {};
   }
 
+  /// Task for unfinished tests
   static Task getDevTask() {
     var task = OrderedTask(id: TaskIdentifier(), steps: [
       InstructionStep(
@@ -99,6 +105,7 @@ class SurveyKitFactory extends SurveyKit {
     return task;
   }
 
+  /// Task for testing new surveys
   static Task getTestTask() {
     List<TextChoice> choices = [
       TextChoice(text: 'Strongly Disagree', value: '0'),
@@ -149,6 +156,7 @@ class SurveyKitFactory extends SurveyKit {
     return task;
   }
 
+  /// Big 5 questions and possible answers
   static Task getBigFiveTask() {
     List<TextChoice> choices = [
       TextChoice(text: 'Strongly Disagree', value: '0'),
@@ -588,6 +596,7 @@ class SurveyKitFactory extends SurveyKit {
     return task;
   }
 
+  /// Task containing some possible question types
   static Task getSampleOrderedTask() {
     //Survey Steps and Questions
     //Survey
@@ -687,6 +696,7 @@ class SurveyKitFactory extends SurveyKit {
     return task;
   }
 
+  /// Get theme of the survey
   static ThemeData getThemeData(BuildContext context) {
     return ThemeData(
         colorScheme: ColorScheme.fromSwatch(

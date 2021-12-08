@@ -5,6 +5,8 @@ import 'package:provider/src/provider.dart';
 
 import 'login_text_field.dart';
 
+/// Responsible for the formatting of the sign up and sign in information
+/// given by the user and the creation of some UI elements
 class SignUpWidget extends StatefulWidget {
   SignUpWidget({Key? key}) : super(key: key);
 
@@ -37,6 +39,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      // ignore: must_be_immutable
       padding: const EdgeInsets.only(left: 24, right: 24, top: 70, bottom: 40),
       child: Form(
         key: _formKey,

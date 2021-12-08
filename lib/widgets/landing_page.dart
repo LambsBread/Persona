@@ -5,9 +5,9 @@ import 'package:persona_application/data/sign_in_up/sign_in.dart';
 import 'package:persona_application/widgets/home_page.dart';
 import 'package:provider/src/provider.dart';
 
+/// This class is the landing page where we will decide if the user is logged in
+/// or needs to register, if so then sign up page will be shown, else the homePage
 class LandingPage extends StatelessWidget {
-  //final Stream<User?> _authStateChanges =
-  //FirebaseAuth.instance.idTokenChanges();
 
   @override
   Widget build(BuildContext context) {

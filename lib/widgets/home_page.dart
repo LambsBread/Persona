@@ -5,6 +5,9 @@ import 'package:persona_application/settings/settings_page.dart';
 import '../dashboard/dashboard.dart';
 import 'app_bar.dart';
 
+/// This is the home page of the application
+/// containing the navigation bar and the different
+/// choices of available pages
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 

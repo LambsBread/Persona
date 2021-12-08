@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// This class is responsible for the management of the text forms
+/// (registration, login)
 class LoginTextField extends StatelessWidget {
   final TextEditingController? valueController;
   final String? name;
@@ -58,6 +60,7 @@ class LoginTextFieldPass extends StatelessWidget {
   final TextInputType? keyType;
   final Function? fun;
   final bool? isPass;
+
   const LoginTextFieldPass({
     Key? key,
     this.valueController,

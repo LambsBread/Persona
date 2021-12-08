@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persona_application/dashboard/traitWidget/trait_description_body.dart';
 
+/// Class for deciding which description should be presented
 class TraitDescription extends StatelessWidget {
   const TraitDescription({
     Key? key,

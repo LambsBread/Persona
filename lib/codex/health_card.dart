@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persona_application/codex/health_description.dart';
 
+/// Class for creating the mental disorder cards
 class HealthCard extends StatelessWidget {
   const HealthCard({Key? key, required this.title}) : super(key: key);
 

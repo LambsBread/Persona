@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/dashboard/charts/radar_chart.dart';
 
+/// Class responsible for getting data from the database and building
+/// the radar charts which display the results of the surveys
 class RadarChartBuilder extends StatelessWidget {
   RadarChartBuilder({Key? key, required this.labels, required this.title})
       : super(key: key);
@@ -34,7 +36,7 @@ class RadarChartBuilder extends StatelessWidget {
               }
             } catch (e) {
               print(
-                  "A score was not found in database or the format was incorrect");
+                  "A score was not found in survey database or the format was incorrect");
             }
             return MyRadarChart(
               values: [],

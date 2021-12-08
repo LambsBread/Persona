@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:persona_application/data/services/my_firebase_auth.dart';
 import 'package:provider/provider.dart';
 
+/// This Class is responsible for displaying the top bar in the UI
 class MyAppBar extends StatelessWidget {
   const MyAppBar({Key? key}) : super(key: key);
 
@@ -14,6 +15,7 @@ class MyAppBar extends StatelessWidget {
         Padding(
           child: IconButton(
             onPressed: () {
+              /// Sign out
               context.read<AuthenticationService>().signOut();
             },
             icon: Icon(Icons.login),
@@ -30,6 +32,9 @@ class MyAppBar extends StatelessWidget {
             SizedBox(width: 10),
             Text(
                 "Hi, " +
+                    /// For first time registrations username will be displayed as null
+                    /// until the widget is rebuilt for the first time this can be
+                    /// solved by building this text with a provider
                     FirebaseAuth.instance.currentUser!.displayName.toString() +
                     "!",
                 style: TextStyle(

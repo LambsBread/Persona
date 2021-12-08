@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import '../moodWidget/MoodData.dart';
 import 'mood_chart.dart';
 
+/// This class is responsible for accessing the database, giving the data
+/// to the MoodChart class and calling the build of the MoodChart
 class MoodChartBuilder extends StatelessWidget {
   const MoodChartBuilder({Key? key}) : super(key: key);
 

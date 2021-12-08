@@ -5,7 +5,7 @@ import 'package:persona_application/dashboard/traitWidget/trait_widget_list_view
 
 import 'moodWidget/mood_widget.dart';
 
-
+///This is the main screen of the app called from the homePage
 class Dashboard extends StatelessWidget {
   Dashboard({Key? key}) : super(key: key);
 

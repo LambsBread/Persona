@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/dashboard/moodWidget/mood_widget_view.dart';
 
+/// This class is the main class of the mood tracker widget
+/// from where the other classes are calle
 class MoodWidget extends StatelessWidget {
   const MoodWidget({Key? key}) : super(key: key);
 
@@ -83,6 +85,7 @@ class MoodWidget extends StatelessWidget {
         });
   }
 
+  /// Add new mood to database
   Future<void> _AddMood(DateTime date, int value) async {
     FirebaseFirestore.instance
         .collection('Moods')

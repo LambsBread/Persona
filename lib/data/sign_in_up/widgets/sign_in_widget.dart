@@ -5,6 +5,8 @@ import 'package:provider/src/provider.dart';
 
 import 'login_text_field.dart';
 
+/// This class is responsible for the format of the information
+/// provided by the user and the initialization of these UI elements
 class SignInWidget extends StatefulWidget {
   SignInWidget({Key? key}) : super(key: key);
 

@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'widgets/mytab_view.dart';
 
-// ignore: must_be_immutable
+///Sign in Page redirected from Landing Page
 class SignIn extends StatelessWidget {
   SignIn({Key? key}) : super(key: key);
 
-  Size? size;
-
-  List<Tab> _tabList = [
+  final List<Tab> _tabList = [
     Tab(
       child: Text(
         "Login",
@@ -24,7 +22,6 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xffF2F2F2),
       body: SingleChildScrollView(
@@ -34,7 +31,7 @@ class SignIn extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: size!.height * 0.3,
+                height: 250,
                 child: AppBar(
                   flexibleSpace: Center(
                     child: Text(
@@ -63,7 +60,10 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(height: size!.height * 0.7, child: MyTabView()),
+              Container(
+                  height: 450 //size!.height * 0.7
+                  ,
+                  child: MyTabView()),
             ],
           ),
         ),

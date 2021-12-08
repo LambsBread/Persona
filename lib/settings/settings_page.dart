@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Settings Page under development
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// This class provides the application with the firebase authentication service
 class AuthenticationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 

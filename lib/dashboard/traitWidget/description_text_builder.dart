@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persona_application/dashboard/traitWidget/trait_description_text.dart';
 
+/// Class responsible for building the description of the traitWidget
 class DescriptionBuilder extends StatelessWidget {
   const DescriptionBuilder({Key? key, required final this.title})
       : super(key: key);

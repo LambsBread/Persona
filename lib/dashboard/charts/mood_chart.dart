@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../moodWidget/MoodData.dart';
 
+/// This class is responsible for initializing the mood chart
+/// and filling it with data from the database
 class MoodChart extends StatelessWidget {
   final List<charts.Series<dynamic, String>> seriesList;
   final bool animate;
@@ -11,17 +13,17 @@ class MoodChart extends StatelessWidget {
 
   factory MoodChart.withSampleData(List<MoodData> moods) {
     return MoodChart(
-      _createSampleData(moods),
+      _createData(moods),
     );
   }
 
-  // [BarLabelDecorator] will automatically position the label
-  // inside the bar if the label will fit. If the label will not fit,
-  // it will draw outside of the bar.
-  // Labels can always display inside or outside using [LabelPosition].
-  //
-  // Text style for inside / outside can be controlled independently by setting
-  // [insideLabelStyleSpec] and [outsideLabelStyleSpec].
+  /// [BarLabelDecorator] will automatically position the label
+  /// inside the bar if the label will fit. If the label will not fit,
+  /// it will draw outside of the bar.
+  /// Labels can always display inside or outside using [LabelPosition].
+  ///
+  /// Text style for inside / outside can be controlled independently by setting
+  /// [insideLabelStyleSpec] and [outsideLabelStyleSpec].
   @override
   Widget build(BuildContext context) {
     return charts.BarChart(
@@ -29,19 +31,19 @@ class MoodChart extends StatelessWidget {
       animate: animate,
       defaultRenderer: new charts.BarRendererConfig(
           cornerStrategy: const charts.ConstCornerStrategy(30)),
-      // Set a bar label decorator.
-      // Example configuring different styles for inside/outside:
-      //       barRendererDecorator: new charts.BarLabelDecorator(
-      //          insideLabelStyleSpec: new charts.TextStyleSpec(...),
-      //          outsideLabelStyleSpec: new charts.TextStyleSpec(...)),
+
+      /// Set a bar label decorator.
+      /// Example configuring different styles for inside/outside:
+      ///       barRendererDecorator: new charts.BarLabelDecorator(
+      ///          insideLabelStyleSpec: new charts.TextStyleSpec(...),
+      ///          outsideLabelStyleSpec: new charts.TextStyleSpec(...)),
       barRendererDecorator: new charts.BarLabelDecorator<String>(),
       domainAxis: new charts.OrdinalAxisSpec(),
     );
   }
 
-  /// Create one series with sample hard coded data.
-  static List<charts.Series<Mood, String>> _createSampleData(
-      List<MoodData> moods) {
+  /// This method processes the data for the initialization of the class
+  static List<charts.Series<Mood, String>> _createData(List<MoodData> moods) {
     int monday = 0,
         tuesday = 0,
         wednesday = 0,
@@ -56,6 +58,7 @@ class MoodChart extends StatelessWidget {
         fridayC = 0,
         saturdayC = 0,
         sundayC = 0;
+
     for (MoodData data in moods) {
       switch (data.getTimestamp.toDate().weekday) {
         case 1:
@@ -89,6 +92,7 @@ class MoodChart extends StatelessWidget {
       }
     }
 
+    /// Get mood averages and check for division by zero
     final data = [
       new Mood('Mon', mondayC != 0 ? monday / mondayC : 0),
       new Mood('Tue', tuesdayC != 0 ? tuesday / tuesdayC : 0),
@@ -99,6 +103,7 @@ class MoodChart extends StatelessWidget {
       new Mood('Sun', sundayC != 0 ? sunday / sundayC : 0),
     ];
 
+    /// Returns the chart containing the processed data
     return [
       new charts.Series<Mood, String>(
           id: 'mood',
@@ -107,7 +112,8 @@ class MoodChart extends StatelessWidget {
           colorFn: (_, __) =>
               charts.MaterialPalette.green.shadeDefault.darker.darker,
           data: data,
-          // Text of the bar label.
+
+          /// Text of the bar label.
           labelAccessorFn: (Mood mood, _) => mood.mood.toString() + " %")
     ];
   }
