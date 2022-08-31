@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:persona_application/data/sign_in_up/sign_in.dart';
 import 'package:persona_application/data/sign_in_up/widgets/login_text_field.dart';
 

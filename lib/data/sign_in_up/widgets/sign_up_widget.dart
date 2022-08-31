@@ -5,7 +5,7 @@ import 'package:provider/src/provider.dart';
 
 import 'login_text_field.dart';
 
-/// Responsible for the formatting of the sign up and sign in information
+/// Responsible for formatting the sign up and sign in information
 /// given by the user and the creation of some UI elements
 class SignUpWidget extends StatefulWidget {
   SignUpWidget({Key? key}) : super(key: key);

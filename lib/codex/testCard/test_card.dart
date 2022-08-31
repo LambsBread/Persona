@@ -8,7 +8,8 @@ class TestCard extends StatelessWidget implements TestCardFactory {
   const TestCard({
     Key? key,
     required this.title,
-    required this.image, required this.surveyKit,
+    required this.image,
+    required this.surveyKit,
   }) : super(key: key);
 
   final String title;
@@ -41,7 +42,9 @@ class TestCard extends StatelessWidget implements TestCardFactory {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return TestDescription(
-                            title: this.title, image: this.image, surveyKit: this.surveyKit);
+                            title: this.title,
+                            image: this.image,
+                            surveyKit: this.surveyKit);
                       }));
                     },
                     child: Container(

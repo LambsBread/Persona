@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:persona_application/codex/survey_kit_factory.dart';
 import 'package:persona_application/codex/testCard/test_description.dart';
 import 'package:survey_kit/survey_kit.dart';
 
